@@ -47,17 +47,21 @@ def advance_state_machine():
         tess.forward(70)
         tess.fillcolor("orange")
         state_num = 1
+        wn.ontimer(advance_state_machine, 1000)
     elif state_num == 1:
         tess.forward(70)
         tess.fillcolor("red")
         state_num = 2
+        wn.ontimer(advance_state_machine, 1000)
     else: # Transition from state 2 to state 0
         tess.back(140)
         tess.fillcolor("green")
         state_num = 0
+        wn.ontimer(advance_state_machine, 1000)
+
 
 # Bind the event handler to the space key.
-wn.onkey(advance_state_machine, "space")
 
 wn.listen() # Listen for events
+advance_state_machine()
 wn.mainloop()
